@@ -88,7 +88,10 @@ void print_queue(std::priority_queue<Receipe, std::vector<Receipe>, std::functio
 bool canICraft(const Receipe& receipe, const Inventory& inventory) {
     bool check = true;
     for (int i = 0; i < 4; i++) {
-        if (abs(receipe.tier[i]) > inventory.tier[i]) {
+        if (receipe.tier[i] == 0) {
+            continue;
+        }
+        if (abs(receipe.tier[i]) >= inventory.tier[i]) {
             check = false;
             break;
         }
